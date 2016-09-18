@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+	<title></title>
+</head>
+<body>
+	<div id="box">	    
+		<ul id="gameBox">
+    <!-- 背景音乐 -->
+    <audio src="music/马里奥赛德 - Fade(钢琴版).mp3" loop="loop"></audio>
+    <!-- 敲击声音 -->
+    <audio src="music/010_爱给网_2gei_com.wav"></audio> 
+      <p id="start">开始游戏</p>
+      <p id="scoll">结束游戏</p>
+      <p id="get">得分：<span></span></p>
+			<li class="grid-box grid-box-1-1"></li>
+			<li class="grid-box grid-box-1-2"></li>
+			<li class="grid-box grid-box-1-3"></li>
+			<li class="grid-box grid-box-2-1"></li>
+			<li class="grid-box grid-box-2-2"></li>
+			<li class="grid-box grid-box-2-3"></li>
+			<li class="grid-box grid-box-3-1"></li>
+			<li class="grid-box grid-box-3-2"></li>
+			<li class="grid-box grid-box-3-3"></li>
+		</ul>
+	</div>
+	<script>
+	    window.onload=function(){
+              // 函数变量
+              var flag=0;
+              var i=0;
+              var x;
+              //输出分数
+              get();
+              // 音乐
+              var music=document.getElementsByTagName('audio')[0];
+              var music2=document.getElementsByTagName('audio')[1];
+              document.onclick=function(event){
+              	event=event||window.event;
+                music2.play();              	
+              }
+              //启动游戏
+              var start=document.getElementById('start');
+              start.onclick=function(){
+              	starts();
+              }
+              //结束游戏
+              var stop=document.getElementById('scoll');
+              stop.onclick=function(){
+                stops();
+              }
+              function stops(){
+                clearInterval(timer);
+                i=0;
+                speed=1500;
+                buffer=800;
+                get();
+                music.pause();
+              }
+              // 随机冒泡
+              var timer=null;
+              var speed;
+              speed=i>20?500:1500-i*50;
+              function starts(){
+                clearInterval(timer);
+                music.play();
+              	timer=setInterval(function(){              	  
+              	  if(flag==0){
+              	  	var numb=Math.floor(Math.random()*9);
+                  	startmove(numb);
+                  }                                                  
+              },speed)
+              }
+              // 地鼠动画效果
+              var buffer=800;
+              bufer=i>20?500:buffer-i*15;
+              function startmove(numb){
+              	var li=document.getElementsByTagName('li');
+              	flag=1;
+                 var image=document.createElement('img');
+                 image.setAttribute("src", "images/地鼠.png");
+                 li[numb].appendChild(image);                  
+                	x=setTimeout(function(){
+                	   	li[numb].removeChild(image);
+                	    flag=0;
+                	   },buffer);  
+                image.onclick=function(){
+                  hid(image,numb);
+                }         	  
+              } 
+              // 点击隐藏             
+              function hid(ogi,numb){
+                music2.play(); 
+                var li=document.getElementsByTagName('li'); 
+                clearTimeout(x);                                                           
+                li[numb].removeChild(ogi);
+                flag=0;                 
+                
+                get();
+                stopevent();
+              }
+              // 分数显示
+              function get(){
+                var s=document.getElementsByTagName('span')[0];
+                s.innerHTML=i;
+                i++;
+              }
+              // 阻止事件冒泡
+              function stopevent(event){
+              	event=event||window.event;
+			      	 if(event.stopPropagation){
+			         event.stopPropagation();//DOM
+			         }else{
+			         event.cancelBubble=true;//IE
+			       }
+			       }
+	    }
+
+	</script>
+</body>
+</html>

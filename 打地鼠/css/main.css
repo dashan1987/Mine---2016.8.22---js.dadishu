@@ -1,0 +1,103 @@
+#box {
+	margin: 50px auto;
+	width: 100%;
+}
+#gameBox {
+	width: 1093px;
+	height: 587px;
+	margin: 0 auto;
+	background: url(../images/背景图片.png) no-repeat;
+	position: relative;
+	cursor: url(../images/锤子.png),default;
+	overflow: hidden;
+	z-index: 1;
+}
+.grid-box {
+	width: 100px;
+	height: 70px;
+	position: absolute;
+	overflow: hidden;
+}
+#start{
+	position: absolute;
+    bottom: 10px;
+    left: 370px;
+    color: #fff;
+    width: 160px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font: 20px "微软雅黑";
+    border-radius: 10px;
+    background-color: #351111;
+    cursor: pointer;
+    z-index: 2;
+    user-select:none;
+}
+#scoll{
+	width: 160px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font: 20px "微软雅黑";
+    border-radius: 10px;
+	position: absolute;
+	bottom: 10px;
+	left: 700px;
+	color: #fff;
+    background-color: #351111;
+    cursor: pointer;
+    z-index: 2;
+    user-select:none;
+}
+#get{
+	position: absolute;
+	top: 40px;
+	right: 60px;
+	color: red;
+	z-index: 2;
+	user-select:none;
+}
+#get span{
+	color: red;
+	z-index: 2;
+	font-size: 48px;
+}
+.grid-box-1-1 {
+	top: 50px;
+	left: 210px;
+}
+.grid-box-1-2 {
+	top: 50px;
+	left: 520px;
+}
+.grid-box-1-3 {
+	top: 50px;
+	left: 830px;
+}
+
+.grid-box-2-1 {
+	top: 240px;
+	left: 210px;
+}
+.grid-box-2-2 {
+	top: 240px;
+	left: 520px;
+}
+.grid-box-2-3 {
+	top: 240px;
+	left: 830px;
+}
+
+.grid-box-3-1 {
+	top: 430px;
+	left: 210px;
+}
+.grid-box-3-2 {
+	top: 430px;
+	left: 520px;
+}
+.grid-box-3-3 {
+	top: 430px;
+	left: 830px;
+}
